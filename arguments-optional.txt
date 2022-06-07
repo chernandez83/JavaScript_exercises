@@ -1,0 +1,47 @@
+function addTogether() {
+  let values = Object.values(arguments); 
+  if(!values.every(element => typeof(element) === 'number')) return undefined;
+  if (values.length == 1) return function(n) {
+      return typeof(n) === 'number' ? n + values[0] : undefined;
+    };
+  return values.reduce((sum, element) => sum + element, 0);
+}
+
+//addTogether(2,3);
+
+console.log(addTogether([3], 5));
+//console.log(typeof([3]) === 'number')
+
+function addTogether() {
+  const [first, second] = arguments;
+  if (typeof(first) !== "number")
+    return undefined;
+  if (second === undefined)
+    return (second) => addTogether(first, second);
+  if (typeof(second) !== "number")
+    return undefined;
+  return first + second;
+}
+
+function addTogether() {
+  const [first, second] = arguments;
+  // First argument is not a number
+  if (typeof(first) !== "number") {
+    return undefined;
+  }
+  // First argument is a number
+  //  and second argument is not defined
+  else if (second === undefined) {
+    function addSecond(second) {
+      // New argument is not a number
+      if (typeof(second) !== "number") {
+        return undefined;
+      }
+      // New argument is a number
+      else {
+        return first + second;
+      }
+    }
+    // Note: returning a *function*
+  }
+}

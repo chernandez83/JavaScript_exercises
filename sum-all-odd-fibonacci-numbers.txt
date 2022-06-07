@@ -1,0 +1,69 @@
+function sumFibs(num) {
+  if (num < 2) return 1;
+  let fibs = [1, 1];
+  do {
+    fibs.push(fibs[fibs.length-1] + fibs[fibs.length-2])
+  } while(fibs[fibs.length-1] <= num);
+  fibs.pop();
+  fibs = fibs.filter(f => f % 2 == 1).reduce((a, b) => a + b, 0)
+  return fibs;
+}
+
+//sumFibs(4);
+console.log(sumFibs(10));
+
+function sumFibs(num) {
+  let prevNumber = 0;
+  let currNumber = 1;
+  let result = 0;
+  while (currNumber <= num) {
+    if (currNumber % 2 !== 0) {
+      result += currNumber;
+    }
+    currNumber += prevNumber;
+    prevNumber = currNumber - prevNumber;
+  }
+
+  return result;
+}
+
+function sumFibs(num) {
+  // Perform checks for the validity of the input
+  if (num <= 0) return 0;
+
+  // Create an array of fib numbers till num
+  const arrFib = [1, 1];
+  let nextFib = 0;
+
+  // We put the new Fibonacci numbers to the front so we
+  // don't need to calculate the length of the array on each
+  // iteration
+  while ((nextFib = arrFib[0] + arrFib[1]) <= num) {
+    arrFib.unshift(nextFib);
+  }
+
+  // We filter the array to get the odd numbers and reduce them to get their sum.
+  return arrFib.filter(x => x % 2 != 0).reduce((a, b) => a + b);
+}
+
+// program to display fibonacci sequence using recursion
+function fibonacci(num) {
+    if(num < 2) {
+        return num;
+    }
+    else {
+        return fibonacci(num-1) + fibonacci(num - 2);
+    }
+}
+
+// take nth term input from the user
+const nTerms = prompt('Enter the number of terms: ');
+
+if(nTerms <=0) {
+    console.log('Enter a positive integer.');
+}
+else {
+    for(let i = 0; i < nTerms; i++) {
+        console.log(fibonacci(i));
+    }
+}

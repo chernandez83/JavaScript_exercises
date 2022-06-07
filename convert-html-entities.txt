@@ -1,0 +1,14 @@
+function convertHTML(str) {
+  let entities = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&apos;'
+  }
+  console.log(entities['&'])
+  return str.split('').map(c => entities[c] ? entities[c] : c).join('');
+}
+
+//convertHTML("Dolce & Gabbana");
+console.log(convertHTML("Dolce & Gabbana"));

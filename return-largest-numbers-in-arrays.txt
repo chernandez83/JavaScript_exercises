@@ -1,0 +1,19 @@
+function largestOfFour(arr) {
+  /*let largest = [];
+  for (let a in arr) {
+    let currLarge = -Infinity;
+    for(let i in arr[a]) {
+      if (arr[a][i] > currLarge) {
+        currLarge = arr[a][i];
+      }
+    }
+    largest.push(currLarge);
+  }
+  return largest;*/
+  return arr.map(subArr => {
+    return Math.max.apply(null, subArr);
+  })
+}
+
+largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+console.log(largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]));

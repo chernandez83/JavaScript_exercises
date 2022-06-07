@@ -1,0 +1,64 @@
+function whatIsInAName(collection, source) {
+  const arr = [];
+  // Only change code below this line
+  for(let obj in collection) {
+    let include = true;
+    for(let key in source) {
+      if (collection[obj][key] !== source[key]) {
+        include = false;
+      }
+    }
+    if (include) {
+      arr.push(collection[obj])
+    }
+  }
+  // Only change code above this line
+  return arr;
+}
+
+//whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }));
+
+console.log(whatIsInAName([{ "apple": 1, "bat": 2 }, { "bat": 2 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "bat": 2 }));
+
+function whatIsInAName(collection, source) {
+  // "What's in a name? that which we call a rose
+  // By any other name would smell as sweet.”
+  // -- by William Shakespeare, Romeo and Juliet
+  const souceKeys = Object.keys(source);
+
+  // filter the collection
+  return collection.filter(obj => {
+    for (let i = 0; i < souceKeys.length; i++) {
+      if (!obj.hasOwnProperty(souceKeys[i]) ||
+          obj[souceKeys[i]] !== source[souceKeys[i]]) {
+        return false;
+      }
+    }
+    return true;
+  });
+}
+
+function whatIsInAName(collection, source) {
+  // "What's in a name? that which we call a rose
+  // By any other name would smell as sweet.”
+  // -- by William Shakespeare, Romeo and Juliet
+  const sourceKeys = Object.keys(source);
+
+  return collection
+    .filter(obj => sourceKeys
+                     .every(key => obj.hasOwnProperty(key) &&
+                            obj[key] === source[key]));
+}
+
+function whatIsInAName(collection, source) {
+  // "What's in a name? that which we call a rose
+  // By any other name would smell as sweet.”
+  // -- by William Shakespeare, Romeo and Juliet
+  const souceKeys = Object.keys(source);
+
+  // filter the collection
+  return collection.filter(obj => souceKeys
+      .map(key => obj.hasOwnProperty(key) && obj[key] === source[key])
+      .reduce((a, b) => a && b));
+}

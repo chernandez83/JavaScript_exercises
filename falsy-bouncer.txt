@@ -1,0 +1,8 @@
+function bouncer(arr) {
+  //both methods work
+  //return arr.filter(a => Boolean(a));
+  return arr.filter(a => !!a);
+}
+
+bouncer([7, "ate", "", false, 9]);
+console.log(bouncer([7, "ate", "", false, 9]))

@@ -1,0 +1,57 @@
+const Person = function(firstAndLast) {
+  // Only change code below this line
+  // Complete the method below and implement the others similarly
+  this.getFirstName = function() {
+    return firstAndLast.split(' ')[0];
+  }
+
+  this.getLastName = function() {
+    return firstAndLast.split(' ')[1];
+  };
+
+  this.getFullName = function() {
+    return firstAndLast;
+  };
+
+  this.setFirstName = function(first) {
+    if (typeof(first) != 'string') return undefined;
+    let arr = firstAndLast.split(' ')
+    firstAndLast = first.concat(' ',arr[1])
+    //return firstAndLast;
+  };
+
+  this.setLastName = function(last) {
+    if (typeof(last) != 'string') return undefined;
+    let arr = firstAndLast.split(' ')
+    firstAndLast = arr[0].concat(' ', last)
+    //return firstAndLast;
+  };
+
+  this.setFullName = function(newFirstAndLast) {
+    if (typeof(firstAndLast) != 'string') return undefined;
+    firstAndLast = newFirstAndLast;
+   //return firstAndLast;
+  };
+
+  return firstAndLast;
+};
+
+const bob = new Person('Bob Ross');
+bob.getFullName();
+console.log(Object.keys(bob).length);
+console.log(bob instanceof Person);
+
+console.log(bob.getFirstName());
+console.log(bob.getLastName());
+console.log(bob.getFullName());
+bob.setFirstName('Haskell');
+console.log(bob.getFirstName(), bob.getFirstName().length);
+bob.setLastName('Curry');
+console.log(bob.getLastName(), bob.getLastName().length);
+bob.setFullName('Haskell Curry');
+console.log(bob.getFullName(), bob.getFullName().length);
+console.log(bob.getFirstName(), bob.getFirstName().length);
+console.log(bob.getLastName(), bob.getLastName().length);
+//console.log(bob.setFirstName('Haskell'));
+//console.log(bob.setLastName('Curry'));
+//console.log(bob.setFullName('Haskell Curry'));

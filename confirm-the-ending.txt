@@ -1,0 +1,6 @@
+function confirmEnding(str, target) {
+  return str.slice(str.lastIndexOf(target)) == target;
+}
+
+confirmEnding("Bastian", "n");
+console.log(confirmEnding("Bastian", "n"));
